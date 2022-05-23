@@ -21,7 +21,20 @@ class cabInvoiceTest : StringSpec() {
         "If car travels for '0.0' km in '10' minutes"{
             cabInvoiceCalculate().fairCalculate(0.0,10) shouldBe 10.0
         }
+        "'10' times 'x' person travels for total '10.0' km in '10' minutes "{
+            // var invoice = carInvoiceTest()
 
+
+
+            cabInvoiceCalculate().fair(Ride(0.5,5)) shouldBe 10.0
+        }
+        "'1' times 'x' person travels for total '0.0' km in '10' minutes"{
+            cabInvoiceCalculate().fair(Ride(0.0,10)) shouldBe 10.0
+        }
 
     }
+//    init {
+//
+//    }
 }
+

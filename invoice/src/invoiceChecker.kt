@@ -7,4 +7,8 @@ class cabInvoiceCalculate {
 
         return Distance * FARE_PER_UNIT_DISTANCE + Time * FARE_PER_UNIT_TIME
     }
+    fun fair(rides : Ride) : Double {
+        val (dis,time) = rides
+        return dis * FARE_PER_UNIT_DISTANCE + time * FARE_PER_UNIT_TIME
+    }
 }
