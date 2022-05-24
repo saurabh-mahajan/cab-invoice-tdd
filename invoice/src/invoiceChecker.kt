@@ -13,7 +13,8 @@ class cabInvoiceCalculate {
 
         //val upperCase1: (String) -> String = { str: String -> str.uppercase() }
 
-        return rides.sumOf { it.distance* FARE_PER_UNIT_DISTANCE + it.time* FARE_PER_UNIT_TIME}
+//        return rides.sumOf { it.distance* FARE_PER_UNIT_DISTANCE + it.time* FARE_PER_UNIT_TIME}
+        return rides.sumOf { it.calculateFare()}
 
 //        for(element in rides){
 //            dis += element.distance
@@ -22,4 +23,22 @@ class cabInvoiceCalculate {
 //
 //        return dis * FARE_PER_UNIT_DISTANCE + time * FARE_PER_UNIT_TIME
     }
+    fun totalRides(rides : List<Ride>) : Int {
+        return rides.size
+    }
+    fun totalInvoiceData(rides : List<Ride>) : InvoiceTotalData{
+        var totalFair = rides.sumOf { it.calculateFare()}
+        var totalRides = rides.size
+        var averageCost = totalFair / totalRides
+        var data = InvoiceTotalData(totalFair,totalRides,averageCost)
+        return data
+    }
+//    fun totalInvoiceData(rides : List<Ride>) : {
+//
+//        var totalFair = rides.sumOf { it.calculateFare()}
+//        return mutableListOf(totalFair, rides.size, totalFair/rides.size)
+//        //return resultData
+//            // resultData.add(totalRides)
+//
+//    }
 }

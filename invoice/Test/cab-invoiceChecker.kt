@@ -50,4 +50,38 @@ class cabInvoiceTest : StringSpec() {
 
     }
 }
+class cabInvoiceDetailedTest : StringSpec() {
+    init{
+        "calculating total fair,Number of rides taken & Average cost per ride (per person) "{
+            val rideOne = Ride(0.5,5)
+            val rideTwo = Ride(1.0,10)
+            val rideThree = Ride(0.0,10)
+            var totalFare = cabInvoiceCalculate().fair(listOf(rideOne,rideTwo,rideThree))
+            totalFare shouldBe 40.0
+            var totalRides = cabInvoiceCalculate().totalRides(listOf(rideOne,rideTwo,rideThree))
+            totalRides shouldBe 3
+            var averageCostPerRide = totalFare / totalRides
+            averageCostPerRide shouldBe 13.333333333333334
+        }
+    }
+}
+class cabInvoiceDetailedTest1 : StringSpec() {
+    init{
+        "calculating total fair,Number of rides taken & Average cost per ride (per person) "{
+            val rideOne = Ride(0.5,5)
+            val rideTwo = Ride(1.0,10)
+            val rideThree = Ride(0.0,10)
+            var data = cabInvoiceCalculate().totalInvoiceData(listOf(rideOne,rideTwo,rideThree))
+            data.totalFair shouldBe 40.0
+            data.totalRides shouldBe 3
+            data.averageCost shouldBe 13.333333333333334
+//            var totalFare = cabInvoiceCalculate().fair(listOf(rideOne,rideTwo,rideThree))
+//            totalFare shouldBe 40.0
+//            var totalRides = cabInvoiceCalculate().totalRides(listOf(rideOne,rideTwo,rideThree))
+//            totalRides shouldBe 3
+//            var averageCostPerRide = totalFare / totalRides
+//            averageCostPerRide shouldBe 13.333333333333334
+        }
+    }
+}
 
